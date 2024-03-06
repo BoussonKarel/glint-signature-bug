@@ -10,5 +10,8 @@
       "glint-signature-bug/*": ["app/*"],
       "*": ["types/*"]
     }
+  },
+  "glint": {
+    "environment": ["ember-loose", "ember-template-imports"]
   }
 }
