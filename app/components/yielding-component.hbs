@@ -1,0 +1,35 @@
+{{#let
+  (component
+    this.inputSelect
+    required=false
+    items=this.numbers
+    itemSelected=this.itemOrNothingSelected
+  )
+  as |Select|
+}}
+  <Select />
+  {{! Error: Types of property 'items' are incompatible. }}
+  {{! Type '(string | number)[] | undefined' is not assignable to type 'number[] | undefined'. }}
+  {{yield Select}}
+{{/let}}
+
+{{#let
+  (component
+    this.inputSelect
+    required=true
+    items=this.numbers
+    itemSelected=this.itemSelected
+  )
+  as |Select|
+}}
+  <Select />
+  {{! Error: Types of property 'items' are incompatible. }}
+  {{! Type '(string | number)[] | undefined' is not assignable to type 'number[] | undefined'. }}
+  {{yield Select}}
+{{/let}}
+
+{{! No error when not passing @required (which is generic) }}
+{{#let (component this.inputSelect items=this.numbers itemSelected=this.itemOrNothingSelected) as |Select|}}
+  <Select />
+  {{yield Select}}
+{{/let}}
